@@ -1,43 +1,19 @@
 import { useCookies } from "react-cookie";
 
-import { Nav, Navbar, Alert, Button } from "react-bootstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Nav, Navbar, Button } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Main from "./pages/main";
 import Schedule from "./pages/schedule";
 import Replacements from "./pages/replacements";
 import Settings from "./pages/settings";
-
-function CookieAlert(callbackFunction: any) {
-	return (
-		<Alert variant="success">
-			<Alert.Heading>
-				Этот сайт использует cookie для хранения данных.
-			</Alert.Heading>
-			<p>
-				Продолжая использовать сайт, Вы даёте согласие на работу с этими
-				файлами.
-			</p>
-			<hr />
-			<div>
-				<Button
-					onClick={() => {
-						callbackFunction("accept", true, { path: "/" });
-					}}
-					variant="outline-success"
-				>
-					Принять и закрыть
-				</Button>
-			</div>
-		</Alert>
-	);
-}
+import CookieAlert from "./utils/CookieAlert";
 
 function ShowMenu() {
 	return (
 		<Router>
 			<Navbar bg="dark" expand="lg">
-				<Navbar.Brand href="/">
+				<Navbar.Brand as={Link} to="/">
 					<Button variant="secondary" block>
 						<div className="text">MPT Assistant</div>
 					</Button>
@@ -45,19 +21,19 @@ function ShowMenu() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto">
-						<Nav.Link href="/schedule">
+						<Nav.Link as={Link} to="/schedule">
 							<Button variant="secondary" block>
 								<div className="text">Расписание</div>
 							</Button>
 						</Nav.Link>
-						<Nav.Link href="/replacements">
+						<Nav.Link as={Link} to="/replacements">
 							<Button variant="secondary" block>
 								<div className="text">Замены</div>
 							</Button>
 						</Nav.Link>
 					</Nav>
 					<Nav>
-						<Nav.Link href="/settings">
+						<Nav.Link as={Link} to="/settings">
 							<Button variant="secondary" block>
 								<div className="text">Настройки</div>
 							</Button>
