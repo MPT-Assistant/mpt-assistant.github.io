@@ -1,6 +1,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~react-bootstrap-typeahead/css/Typeahead.css";
 
 @import "./utils/text.scss";
+@import "./pages/settings.scss";
 
 #root {
 	height: 100vh;
@@ -16,6 +18,8 @@ body {
 	/* justify-content: center; */
 	/* align-items: center; */
 	user-select: none;
+	// color: #eaeaeb;
+	// font-family: "Noto Sans JP", sans-serif;
 }
 
 :not(input):not(textarea),
