@@ -14,19 +14,24 @@ function ShowMenu() {
 	const [selectedButton, selectButton] = useState(window.location.pathname);
 	return (
 		<Router>
-			<Navbar bg="dark" expand="lg">
+			<Navbar bg="dark" expand="lg" fixed="top">
 				<Navbar.Brand as={Link} to="/">
 					<Button
-						variant={selectedButton === "/main" ? "primary" : "secondary"}
+						variant={selectedButton === "/" ? "primary" : "secondary"}
 						block
-						disabled={selectedButton === "/main"}
-						onClick={() => selectButton("/main")}
+						disabled={selectedButton === "/"}
+						onClick={() => selectButton("/")}
 					>
 						<div className="text">MPT Assistant</div>
 					</Button>
 				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
+				<Navbar.Toggle
+					aria-controls="navigation"
+					style={{
+						backgroundColor: "#d4d4d4",
+					}}
+				/>
+				<Navbar.Collapse id="navigation">
 					<Nav className="mr-auto">
 						<Nav.Link as={Link} to="/schedule">
 							<Button
