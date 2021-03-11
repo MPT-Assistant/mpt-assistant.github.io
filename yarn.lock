@@ -1403,10 +1403,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@mpt-assistant/api-wrapper@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@mpt-assistant/api-wrapper/-/api-wrapper-1.0.1.tgz#5f1f05d9c94c19d3e18c55573e3d90b9561d6705"
-  integrity sha512-HmGl7ZiSqVcOX1Y3GEY9hxDFUQNxczFWrMG6ozj7XqS6b5iOeSxhgw8XfcufIMRTNz1E70E1JWRq0k+CUYSEbA==
+"@mpt-assistant/api-wrapper@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@mpt-assistant/api-wrapper/-/api-wrapper-1.0.2.tgz#3159476e0805978a342aa0977063ba8bcc6b7f6d"
+  integrity sha512-XpZDgne7Sf5gFyxlvv80F/x0JyHrQBmvhX8bewve/tdbo0zZDwdVHlpxDFdmVDSS0ndB4u7EWgaBCtd1hFN6KA==
   dependencies:
     axios "^0.21.1"
 
