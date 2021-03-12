@@ -55,7 +55,7 @@ export default function Settings() {
 										Ваша специальность: {groupData.specialty}
 									</Card.Text>
 								</Card.Body>
-								<Button variant="danger" onClick={() => resetGroupData()}>
+								<Button variant="warning" onClick={() => resetGroupData()}>
 									Изменить группу
 								</Button>
 							</Card>
@@ -66,12 +66,11 @@ export default function Settings() {
 								</div>
 
 								<Typeahead
-									// style={{ backgroundColor: "#000000" }}
 									options={perhapsGroups}
 									filterBy={["name"]}
 									labelKey={(group) => group.name}
 									paginate={false}
-									placeholder={"хоть что нибудь"}
+									placeholder="БИ50-3-19"
 									emptyLabel="Неверное название группы"
 									maxResults={3}
 									onChange={([selected]) => {
