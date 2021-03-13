@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
-import { Form, Spinner, Card, Button } from "react-bootstrap";
+import { Form, Card, Button } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
+
+import LoadingSpinner from "../components/LoadingSpinner";
 
 import API from "../../TS/api";
 
@@ -42,7 +44,7 @@ export default function Settings() {
 	return (
 		<div className="settings main">
 			{isLoading ? (
-				<Spinner animation="border" variant="success" />
+				<LoadingSpinner />
 			) : (
 				<form>
 					<Form.Group controlId="exampleForm.ControlInput1">
@@ -74,9 +76,21 @@ export default function Settings() {
 									emptyLabel="Неверное название группы"
 									maxResults={3}
 									onChange={([selected]) => {
-										setGroupData("uid", selected.uid);
-										setGroupData("name", selected.name);
-										setGroupData("specialty", selected.specialty);
+										setGroupData("uid", selected.uid, {
+											expires: new Date(
+												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
+											),
+										});
+										setGroupData("name", selected.name, {
+											expires: new Date(
+												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
+											),
+										});
+										setGroupData("specialty", selected.specialty, {
+											expires: new Date(
+												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
+											),
+										});
 									}}
 								/>
 							</>

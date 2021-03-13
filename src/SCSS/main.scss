@@ -2,12 +2,14 @@
 @import "~react-bootstrap-typeahead/css/Typeahead.css";
 
 @import "./utils/text.scss";
-@import "./utils/table.scss";
+// @import "./utils/table.scss";
+@import "./utils//LoadingSpinner.scss";
 @import "./pages/settings.scss";
+@import "./pages/schedule.scss";
 
 #root {
-	height: 100vh;
-	width: 100%;
+	height: 90vh;
+	width: 100vw;
 	overflow: scroll;
 }
 
@@ -16,11 +18,7 @@ body {
 	background-color: #202225;
 	overflow-y: hidden;
 	display: flex;
-	/* justify-content: center; */
-	/* align-items: center; */
 	user-select: none;
-	// color: #eaeaeb;
-	// font-family: "Noto Sans JP", sans-serif;
 }
 
 :not(input):not(textarea),

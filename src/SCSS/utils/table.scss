@@ -1,35 +1,35 @@
-div.table {
-	border: 5px solid #fff;
-	border-radius: 10px;
-	margin-bottom: 15px;
+// div.table {
+// 	border: 5px solid #fff;
+// 	border-radius: 10px;
+// 	margin-bottom: 15px;
 
-	table {
-		width: 100%;
-		border-radius: 10px;
-		border: 5px solid #fff;
-		border-collapse: collapse;
-		overflow: hidden;
+// 	table {
+// 		width: 100%;
+// 		border-radius: 10px;
+// 		border: 5px solid #fff;
+// 		border-collapse: collapse;
+// 		overflow: hidden;
 
-		tr {
-			border: 3px solid white;
-			height: 50px;
-			color: white;
-		}
+// 		tr {
+// 			border: 3px solid white;
+// 			height: 50px;
+// 			color: white;
+// 		}
 
-		td {
-			border: 3px solid white;
-		}
+// 		td {
+// 			border: 3px solid white;
+// 		}
 
-		th {
-			border: 3px solid white;
-		}
+// 		th {
+// 			border: 3px solid white;
+// 		}
 
-		tr:last-child td:first-child {
-			border-bottom-left-radius: 10px;
-		}
+// 		tr:last-child td:first-child {
+// 			border-bottom-left-radius: 10px;
+// 		}
 
-		tr:last-child td:last-child {
-			border-bottom-right-radius: 10px;
-		}
-	}
-}
+// 		tr:last-child td:last-child {
+// 			border-bottom-right-radius: 10px;
+// 		}
+// 	}
+// }

@@ -1,8 +1,10 @@
 import moment from "moment";
 
 import { useState, useEffect } from "react";
-import { Alert, Spinner, Pagination, Table } from "react-bootstrap";
+import { Alert, Table } from "react-bootstrap";
 import { useCookies } from "react-cookie";
+
+import LoadingSpinner from "../components/LoadingSpinner";
 
 import API from "../../TS/api";
 
@@ -30,12 +32,18 @@ function Schedule() {
 			if (groupSchedule.length === 0) {
 				const Response = await API.getGroupSchedule({ id: groupData.uid });
 				updateGroupSchedule(Response.response);
+				const selectedTime = new Date(
+					new Date().valueOf() + 48 * 24 * 60 * 60 * 1000,
+				);
 				const nowSchedule = Response.response.find(
-					(x) => x.num === new Date(new Date().valueOf() + 48 * 24 * 60 * 60 * 1000).getDay(),
+					(x) => x.num === selectedTime.getDay(),
 				);
 				const PreParsedSchedule = nowSchedule ? (
-					<div className="table">
-						<Table striped bordered hover>
+					<div>
+						<h1 className="text">
+							Расписание на {moment(selectedTime).format("DD.MM.YYYY")}
+						</h1>
+						<Table striped bordered hover className="schedule table">
 							<thead>
 								<tr>
 									<th>Пара</th>
@@ -69,11 +77,7 @@ function Schedule() {
 
 	return (
 		<div className="settings main">
-			{isLoading ? (
-				<Spinner animation="border" variant="success" />
-			) : (
-				ParsedSchedule
-			)}
+			{isLoading ? <LoadingSpinner /> : ParsedSchedule}
 		</div>
 	);
 }

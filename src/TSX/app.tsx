@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-import { isMobile } from "react-device-detect";
 import { Nav, Navbar, Button } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -15,7 +14,12 @@ function ShowMenu() {
 	const [selectedButton, selectButton] = useState(window.location.pathname);
 	return (
 		<Router>
-			<Navbar bg="dark" expand="lg" fixed={isMobile ? "bottom" : "top"}>
+			<Route exact path="/" component={Main} />
+			<Route path="/schedule" component={Schedule} />
+			<Route path="/replacements" component={Replacements} />
+			<Route path="/settings" component={Settings} />
+
+			<Navbar bg="dark" expand="lg" fixed="bottom">
 				<Navbar.Brand as={Link} to="/">
 					<Button
 						variant={selectedButton === "/" ? "primary" : "secondary"}
@@ -75,11 +79,6 @@ function ShowMenu() {
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
-
-			<Route exact path="/" component={Main} />
-			<Route path="/schedule" component={Schedule} />
-			<Route path="/replacements" component={Replacements} />
-			<Route path="/settings" component={Settings} />
 		</Router>
 	);
 }
