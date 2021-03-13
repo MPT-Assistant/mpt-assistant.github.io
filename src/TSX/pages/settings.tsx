@@ -49,7 +49,11 @@ export default function Settings() {
 				<form>
 					<Form.Group controlId="exampleForm.ControlInput1">
 						{groupData.uid ? (
-							<Card bg="secondary">
+							<Card
+								bg="secondary"
+								className="white-text"
+								style={{ fontSize: 15 }}
+							>
 								<Card.Body>
 									<Card.Title>Информация о группе</Card.Title>
 									<Card.Text>Ваша группа: {groupData.name}</Card.Text>

@@ -39,11 +39,11 @@ function Schedule() {
 					(x) => x.num === selectedTime.getDay(),
 				);
 				const PreParsedSchedule = nowSchedule ? (
-					<div>
-						<h1 className="text">
+					<div className="schedule">
+						<h1 className="white-text">
 							Расписание на {moment(selectedTime).format("DD.MM.YYYY")}
 						</h1>
-						<Table striped bordered hover className="schedule table">
+						<Table variant="dark" bordered className="table">
 							<thead>
 								<tr>
 									<th>Пара</th>
