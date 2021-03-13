@@ -31,7 +31,7 @@ function Schedule() {
 				const Response = await API.getGroupSchedule({ id: groupData.uid });
 				updateGroupSchedule(Response.response);
 				const nowSchedule = Response.response.find(
-					(x) => x.num === new Date().getDay(),
+					(x) => x.num === new Date(new Date().valueOf() + 48 * 24 * 60 * 60 * 1000).getDay(),
 				);
 				const PreParsedSchedule = nowSchedule ? (
 					<div className="table">
