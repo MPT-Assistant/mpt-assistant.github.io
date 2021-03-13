@@ -72,7 +72,7 @@ export default function Settings() {
 									filterBy={["name"]}
 									labelKey={(group) => group.name}
 									paginate={false}
-									placeholder="БИ50-3-19"
+									placeholder="Например, БИ50-3-19..."
 									emptyLabel="Неверное название группы"
 									maxResults={3}
 									onChange={([selected]) => {
