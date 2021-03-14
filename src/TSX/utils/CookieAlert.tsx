@@ -14,7 +14,11 @@ export default function CookieAlert(callbackFunction: any) {
 			<div>
 				<Button
 					onClick={() => {
-						callbackFunction("accept", true, { path: "/" });
+						callbackFunction("accept", true, {
+							expires: new Date(
+								new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
+							),
+						});
 					}}
 					variant="outline-success"
 				>
