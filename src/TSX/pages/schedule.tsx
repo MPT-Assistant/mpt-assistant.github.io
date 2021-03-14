@@ -75,11 +75,7 @@ function Schedule() {
 		})();
 	});
 
-	return (
-		<div className="settings main">
-			{isLoading ? <LoadingSpinner /> : ParsedSchedule}
-		</div>
-	);
+	return isLoading ? <LoadingSpinner /> : ParsedSchedule;
 }
 
 export default function CheckInstallGroup() {
