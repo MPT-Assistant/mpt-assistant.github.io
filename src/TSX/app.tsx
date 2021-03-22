@@ -13,7 +13,7 @@ import CookieAlert from "./utils/CookieAlert";
 function ShowMenu() {
 	const [selectedButton, selectButton] = useState(window.location.pathname);
 	return (
-		<Router>
+		<Router basename="/">
 			<Route exact path="/" component={Main} />
 			<Route path="/schedule" component={Schedule} />
 			<Route path="/replacements" component={Replacements} />

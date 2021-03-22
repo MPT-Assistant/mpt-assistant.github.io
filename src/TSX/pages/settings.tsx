@@ -20,6 +20,7 @@ export default function Settings() {
 	>([]);
 	const [groupData, setGroupData, removeGroupData] = useCookies([
 		"uid",
+		"group_id",
 		"name",
 		"specialty",
 	]);
@@ -37,6 +38,7 @@ export default function Settings() {
 
 	const resetGroupData = () => {
 		removeGroupData("uid");
+		removeGroupData("group_id");
 		removeGroupData("name");
 		removeGroupData("specialty");
 	};
@@ -81,6 +83,11 @@ export default function Settings() {
 									maxResults={3}
 									onChange={([selected]) => {
 										setGroupData("uid", selected.uid, {
+											expires: new Date(
+												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
+											),
+										});
+										setGroupData("group_id", selected.id, {
 											expires: new Date(
 												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
 											),
