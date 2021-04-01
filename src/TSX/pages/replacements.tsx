@@ -1,7 +1,5 @@
-import moment from "moment";
-
 import { useState, useEffect } from "react";
-import { Alert, Table, Card, ListGroup } from "react-bootstrap";
+import { Alert, Table, Card } from "react-bootstrap";
 import { useCookies } from "react-cookie";
 
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -9,12 +7,12 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import API from "../../TS/api";
 
 function Replacements() {
-	const [groupData] = useCookies(["uid", "group_id"]);
+	const [groupData] = useCookies(["name"]);
 
 	const [
 		ParsedGroupReplacements,
 		updateParsedGroupReplacements,
-	] = useState<JSX.Element>(<div></div>);
+	] = useState<JSX.Element>(<div/>);
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [isLoaded, setLoaded] = useState<boolean>(false);
 
@@ -22,8 +20,8 @@ function Replacements() {
 		(async function getGroupReplacements() {
 			if (!isLoaded) {
 				setLoaded(true);
-				const currentReplacements = await API.getCurrentReplacements({
-					id: groupData.group_id,
+				const currentReplacements = await API.replacements.get({
+					group: groupData.name
 				});
 				const ParsedReplacements: Array<{
 					date: string;
@@ -133,9 +131,9 @@ function Replacements() {
 }
 
 export default function CheckInstallGroup() {
-	const [groupData] = useCookies(["uid"]);
+	const [groupData] = useCookies(["name"]);
 
-	return groupData.uid ? (
+	return groupData.name ? (
 		<Replacements />
 	) : (
 		<Alert variant="danger">

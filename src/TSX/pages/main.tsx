@@ -1,6 +1,6 @@
 export default function Main() {
 	return (
-		<div className="text">
+		<div className="white-text">
 			<h1>This is Main Page</h1>
 		</div>
 	);

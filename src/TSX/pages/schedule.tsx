@@ -9,7 +9,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import API from "../../TS/api";
 
 function Schedule() {
-	const [groupData] = useCookies(["uid"]);
+	const [groupData] = useCookies(["name"]);
 	const [groupSchedule, updateGroupSchedule] = useState<
 		Array<{
 			name: string;
@@ -23,18 +23,16 @@ function Schedule() {
 		}>
 	>([]);
 	const [ParsedSchedule, updateParsedSchedule] = useState<JSX.Element>(
-		<div></div>,
+		<div/>,
 	);
 	const [isLoading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		(async function getGroupSchedule() {
 			if (groupSchedule.length === 0) {
-				const Response = await API.getGroupSchedule({ id: groupData.uid });
+				const Response = await API.schedule.get({ name: groupData.name });
 				updateGroupSchedule(Response.response);
-				const selectedTime = new Date(
-					new Date().valueOf() + 48 * 24 * 60 * 60 * 1000,
-				);
+				const selectedTime = new Date();
 				const nowSchedule = Response.response.find(
 					(x) => x.num === selectedTime.getDay(),
 				);
@@ -65,7 +63,7 @@ function Schedule() {
 						</Table>
 					</div>
 				) : (
-					<div>
+					<div className="white-text">
 						<h1>Сегодня нет пар</h1>
 					</div>
 				);
@@ -79,9 +77,9 @@ function Schedule() {
 }
 
 export default function CheckInstallGroup() {
-	const [groupData] = useCookies(["uid"]);
+	const [groupData] = useCookies(["name"]);
 
-	return groupData.uid ? (
+	return groupData.name ? (
 		<Schedule />
 	) : (
 		<Alert variant="danger">

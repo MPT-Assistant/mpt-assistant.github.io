@@ -11,16 +11,11 @@ import API from "../../TS/api";
 export default function Settings() {
 	const [perhapsGroups, updateGroupList] = useState<
 		Array<{
-			id: string;
-			uid: string;
 			name: string;
 			specialty: string;
-			specialtyID: string;
 		}>
 	>([]);
 	const [groupData, setGroupData, removeGroupData] = useCookies([
-		"uid",
-		"group_id",
 		"name",
 		"specialty",
 	]);
@@ -29,7 +24,7 @@ export default function Settings() {
 	useEffect(() => {
 		(async function GetGroups() {
 			if (perhapsGroups.length === 0) {
-				const Response = await API.getGroupList({});
+				const Response = await API.group.getList();
 				updateGroupList(Response.response);
 				setLoading(false);
 			}
@@ -37,8 +32,6 @@ export default function Settings() {
 	});
 
 	const resetGroupData = () => {
-		removeGroupData("uid");
-		removeGroupData("group_id");
 		removeGroupData("name");
 		removeGroupData("specialty");
 	};
@@ -50,7 +43,7 @@ export default function Settings() {
 			) : (
 				<form>
 					<Form.Group controlId="exampleForm.ControlInput1">
-						{groupData.uid ? (
+						{groupData.name ? (
 							<Card
 								bg="secondary"
 								className="white-text"
@@ -69,7 +62,7 @@ export default function Settings() {
 							</Card>
 						) : (
 							<>
-								<div className="text">
+								<div className="white-text">
 									<h3>Введите вашу группу</h3>
 								</div>
 
@@ -82,16 +75,6 @@ export default function Settings() {
 									emptyLabel="Неверное название группы"
 									maxResults={3}
 									onChange={([selected]) => {
-										setGroupData("uid", selected.uid, {
-											expires: new Date(
-												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
-											),
-										});
-										setGroupData("group_id", selected.id, {
-											expires: new Date(
-												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,
-											),
-										});
 										setGroupData("name", selected.name, {
 											expires: new Date(
 												new Date().valueOf() + 5 * 365 * 24 * 60 * 60 * 1000,

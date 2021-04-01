@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 
 import { Nav, Navbar, Button } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 import Main from "./pages/main";
 import Schedule from "./pages/schedule";
@@ -11,7 +11,7 @@ import Settings from "./pages/settings";
 import CookieAlert from "./utils/CookieAlert";
 
 function ShowMenu() {
-	const [selectedButton, selectButton] = useState(window.location.pathname);
+	const [selectedButton, selectButton] = useState(window.location.hash);
 	return (
 		<Router basename="/">
 			<Route exact path="/" component={Main} />
@@ -20,12 +20,12 @@ function ShowMenu() {
 			<Route path="/settings" component={Settings} />
 
 			<Navbar bg="dark" expand="lg" fixed="bottom">
-				<Navbar.Brand as={Link} to="/">
+				<Navbar.Brand as={Link} to="/" replace>
 					<Button
-						variant={selectedButton === "/" ? "primary" : "secondary"}
+						variant={selectedButton === "#/" ? "primary" : "secondary"}
 						block
-						disabled={selectedButton === "/"}
-						onClick={() => selectButton("/")}
+						disabled={selectedButton === "#/"}
+						onClick={() => selectButton("#/")}
 					>
 						<div className="text">MPT Assistant</div>
 					</Button>
@@ -38,40 +38,40 @@ function ShowMenu() {
 				/>
 				<Navbar.Collapse id="navigation">
 					<Nav className="mr-auto">
-						<Nav.Link as={Link} to="/schedule">
+						<Nav.Link as={Link} to="/schedule" replace>
 							<Button
 								variant={
-									selectedButton === "/schedule" ? "primary" : "secondary"
+									selectedButton === "#/schedule" ? "primary" : "secondary"
 								}
 								block
-								disabled={selectedButton === "/schedule"}
-								onClick={() => selectButton("/schedule")}
+								disabled={selectedButton === "#/schedule"}
+								onClick={() => selectButton("#/schedule")}
 							>
 								<div className="text">Расписание</div>
 							</Button>
 						</Nav.Link>
-						<Nav.Link as={Link} to="/replacements">
+						<Nav.Link as={Link} to="/replacements" replace>
 							<Button
 								variant={
-									selectedButton === "/replacements" ? "primary" : "secondary"
+									selectedButton === "#/replacements" ? "primary" : "secondary"
 								}
 								block
-								disabled={selectedButton === "/replacements"}
-								onClick={() => selectButton("/replacements")}
+								disabled={selectedButton === "#/replacements"}
+								onClick={() => selectButton("#/replacements")}
 							>
 								<div className="text">Замены</div>
 							</Button>
 						</Nav.Link>
 					</Nav>
 					<Nav>
-						<Nav.Link as={Link} to="/settings">
+						<Nav.Link as={Link} to="/settings" replace>
 							<Button
 								variant={
-									selectedButton === "/settings" ? "primary" : "secondary"
+									selectedButton === "#/settings" ? "primary" : "secondary"
 								}
 								block
-								disabled={selectedButton === "/settings"}
-								onClick={() => selectButton("/settings")}
+								disabled={selectedButton === "#/settings"}
+								onClick={() => selectButton("#/settings")}
 							>
 								<div className="text">Настройки</div>
 							</Button>
